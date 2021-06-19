@@ -94,7 +94,7 @@ def submitData():
         
 
 def updateData():
-    if AVD.get != "" and AVDS != "":
+    if AVD.get != None and AVDS != None:
         tree.delete(*tree.get_children())
         conn = sqlite3.connect("estacio.db")
         cursor = conn.cursor()
@@ -177,9 +177,19 @@ def onSelect(event):
     materia.set(selectedItem[2])
     AV1.set(selectedItem[3])
     AV2.set(selectedItem[4])
-    AV3.set(selectedItem[5])
-    AVD.set(selectedItem[6])
-    AVDS.set(selectedItem[7])
+    if selectedItem[5] == None:
+        AV3.set("")
+    else:
+        AV3.set(selectedItem[5])
+    if AVD.set(selectedItem[6]) == None:
+        AVD.set("")
+    else:
+        AVD.set(selectedItem[6])
+    if AVDS.set(selectedItem[7]) == None:
+        AVDS.set("")
+    else:
+        AVDS.set(selectedItem[7])
+
 
     #--------- CRIANDO JANELA UPDATE ---------
     updateWindow = Toplevel()
